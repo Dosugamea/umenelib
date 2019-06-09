@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="umenelib",
-    version="1.0.0",
-    }
-)
+    name='foo',
+    version='1.0',
+    py_modules=['chat', '_init_'],
+    )
