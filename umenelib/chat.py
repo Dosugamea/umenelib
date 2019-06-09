@@ -48,10 +48,10 @@ def Notify(message):
 def linetime(time):
     r = datetime.fromtimestamp(time / 1000).strftime("%Y/%m/%d %H:%M:%S")
     return r
-def talk(title, message, path="./",speaker="1",style="1",rate="1",format="2"):
+def talk(key,title, message, path="./",speaker="1",style="1",rate="1",format="2"):
     if not os.path.isfile(path+title+".wav"): # 既に音声ファイルがあるかどうかを確認する
         try:
-            apikey = "ここに自分のAPI"
+            apikey = key
             url = 'https://api.apigw.smt.docomo.ne.jp/crayon/v1/textToSpeech?APIKEY=%s' % apikey
             params = {
                   "Command":"AP_Synth",
@@ -101,3 +101,17 @@ def music(name,id="mb00000000016d2e75",artist="",imageurl="https://pixabay.com/i
 def fortuneslip():
     r = random.choice(["大吉","中吉","小吉","末吉","大凶","凶"])
     return r
+def googletrans(word):
+    headers = {
+        "User-Agent": "GoogleTranslate/5.9.59004 (iPhone; iOS 10.2; ja; iPhone9,1)"
+    }
+    params = {
+        "client": "it",
+        "dt": ["t", "rmt", "bd", "rms", "qca", "ss", "md", "ld", "ex"],
+        "dj": "1",
+        "q": word,
+        "tl": "ja"
+    }
+    r = requests.get(url="https://translate.google.com/translate_a/single", headers=headers, params=params)
+    r = r.json()
+    return r["sentences"][0]["trans"]
