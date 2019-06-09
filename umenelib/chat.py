@@ -16,8 +16,8 @@ def ozichat(name,emoji=3,punctiuation=1):
     r = requests.post("https://ojichat.appspot.com/post", data=payload)
     data = r.json()
     return data['message']
-def bitly(url):
-    token = "HeZyeL5cYNKfv3rllTKjbWZywflvtPOlKbcaGQA5V2H"
+def bitly(token,url):
+    token = token
     query = {
             'access_token': token,
             'longurl':url
@@ -40,8 +40,8 @@ def filesize(byte):
         return str(round((byte / 1024.0), 1)) + ' TB'
     else:
         return str(byte) + ' Bytes'
-def Notify(message):
-    token = "HeZyeL5cYNKfv3rllTKjbWZywflvtPOlKbcaGQA5V2H"
+def Notify(to,message):
+    token = to
     headers = {'Authorization' : 'Bearer ' + token}
     payload = {'message' : message}
     r = requests.post('https://notify-api.line.me/api/notify', headers=headers, params=payload)
@@ -51,8 +51,7 @@ def linetime(time):
 def talk(key,title, message, path="./",speaker="1",style="1",rate="1",format="2"):
     if not os.path.isfile(path+title+".wav"): # 既に音声ファイルがあるかどうかを確認する
         try:
-            apikey = key
-            url = 'https://api.apigw.smt.docomo.ne.jp/crayon/v1/textToSpeech?APIKEY=%s' % apikey
+            url = 'https://api.apigw.smt.docomo.ne.jp/crayon/v1/textToSpeech?APIKEY=%s' % key
             params = {
                   "Command":"AP_Synth",
                   "SpeakerID":speaker,
