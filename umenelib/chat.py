@@ -1,4 +1,4 @@
-import requests,datetime,random,string,urllib
+import requests,datetime,random,string,urllib,json
 
 def ciplex(word):
     list = []
