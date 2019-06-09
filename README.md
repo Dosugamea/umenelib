@@ -1,12 +1,13 @@
-## Description
+# Description
 よくソースで見る関数をまとめただけ
 
-使い方は使い方.txtを見て下せえ
+使い方は使い方.txt参照
 
-## How to install
+# How to install
 
 `pip install git+https://github.com/umeneriman/umenelib`
 
 `pip3 install git+https://github.com/umeneriman/umenelib`
-## Author
+
+# Author
 [umeneri](https://github.com/umeneriman)
