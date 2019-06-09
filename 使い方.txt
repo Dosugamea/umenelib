@@ -1,0 +1,73 @@
+簡易的な使い方の説明
+
+・ciplex(word)
+　　簡易暗号化＆複合化
+    -word 暗号化＆複合化したい言葉
+  
+・ozichat(name,emoji,punctiuation)
+　　おじさんがLINEやメールで送ってきそうな文を生成する。
+　　-name　相手の名前
+　　-emoji　数字を大きく(0~3)することで、絵文字/顔文字がより連続で含まれやすくなる（デフォルトだと３）。
+　　-punctiuation　数字を大きく(1~3)することで文章に句読点が含まれやすくなる（デフォルトだと１）。
+
+・bitly(token,url)
+　　bitlyを使って短縮URL生成。
+　　-token　bitlyのアクセストークン
+　　-url　短縮したいURL
+
+・tinyurl(url)
+　　tinyurlを使って短縮URL生成。
+　　-url　短縮したいURL
+  
+・conversion(byte)
+　　byteをKB,MB,GB,TBに変換。
+　　-byte　変換したいbyte数。
+  
+・Notify(to,message)
+　　LineNotifyを使用してメッセージ送信
+　　-to　NotifyのToken。
+　　-message　送りたい文字。
+
+・linetime(time)
+　　Lineで取得できるよくわからん時間を2４時間表記に変換
+　　-time　Lineで取得したじかん。  
+  
+・talk(key,title,message,path,speaker,style,rate,format)
+　　DoCoMoのAPIを利用して合成音声を生成。
+　　-key  自分のAPIKEY
+　　-title　保存する際のファイルの名前
+　　-path　保存先（デフォルトだと同じディレクトリ）
+　　-speaker　話者（デフォルトだと1）
+　　-style 話し方（デフォルトだと1）
+　　-rate　しゃべる速度（デフォルトだと1）
+　　-format 保存する形式（デフォルトだと2）
+
+・imgoogle(text)
+　　Google画像検索結果のURLを取得
+　　-text　検索したい言葉。  
+
+・google(text)
+　　googleの検索結果URLを取得
+　　-text　検索したい言葉。  
+
+・youtube(text)
+　　youtubeの検索結果URLを取得
+　　-text　検索したい言葉。  
+
+・yahoo(text)
+　　yahooの検索結果URLを取得
+　　-text　検索したい言葉。  
+
+・bing(text)
+　　bingの検索結果URLを取得
+　　-text　検索したい言葉。  
+
+・googletrans(word)
+　　google翻訳で日本語に翻訳
+　　-word　検索したい言葉。 
+
+・fortuneslip()
+　　ただのおみくじ
+
+
+  
