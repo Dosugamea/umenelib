@@ -6,12 +6,12 @@ import string
 import json
 
 class UmeneLib(object):
-    def fortuneslip(self):
+    def drawFortune(self):
         '''おみくじをひく'''
         r = random.choice(["大吉","中吉","小吉","末吉","大凶","凶"])
         return r
     
-    def filesize(self,byte):
+    def convertFilesize(self,byte):
         '''ファイルサイズの単位を変換して文字列にする'''
         if byte < 1024:
             return str(byte) + ' Bytes'
@@ -26,12 +26,12 @@ class UmeneLib(object):
         else:
             return str(byte) + ' Bytes'
         
-    def rancharacter(self,quantity=6):
+    def generateRandCharacter(self,quantity=6):
         '''指定した字数のランダムな文字列を作る'''
         r = ''.join(random.choices(string.ascii_letters + string.digits, quantity))
         return r
     
-    def ciplex(self,word):
+    def cobvertCiplex(self,word):
         '''文章をランダムな文字に変換する(?)'''
         list = []
         r = ''
@@ -44,12 +44,12 @@ class UmeneLib(object):
             r += list[ii]
         return r
 
-    def linetime(self,time):
+    def convertLineTime(self,time):
         '''Line Time を 日付文字列にする'''
         r = datetime.fromtimestamp(time / 1000).strftime("%Y/%m/%d %H:%M:%S")
         return r
     
-    def music(self,name,id="mb00000000016d2e75",artist="",imageurl="https://pixabay.com/images/id-3386570/",url="https://www.google.com/"):
+    def createMusic(self,name,id="mb00000000016d2e75",artist="",imageurl="https://pixabay.com/images/id-3386570/",url="https://www.google.com/"):
         '''音楽型のMetadataを作る'''
         r = {
             "id": id,
@@ -62,7 +62,7 @@ class UmeneLib(object):
         }
         return r
 
-    def bitly(self,token,url):
+    def shortenWithBitly(self,token,url):
         '''URL短縮(要トークン)'''
         token = token
         query = {
@@ -72,37 +72,37 @@ class UmeneLib(object):
         r = requests.get('https://api-ssl.bitly.com/v3/shorten',params=query).json()['data']['url']
         return r
 
-    def tinyurl(self,url):
+    def shortenWithTinyurl(self,url):
         '''URL短縮(トークン不要)'''
         r = requests.post("http://tinyurl.com/api-create.php?url=%s" % url)
         return r.text
     
-    def imgoogle(self,text):
+    def generateLinkWithImgGoogle(self,text):
         '''Google画像検索リンクを作る'''
         r = tinyurl('https://www.google.co.jp/search?hl=ja&tbm=isch&' + urllib.parse.quote(text))
         return r
 
-    def google(self,text):
+    def generateLinkWithGoogle(self,text):
         '''Google検索リンクを作る'''
         r = tinyurl('https://www.google.co.jp/search?' + urllib.parse.quote(text))
         return r
 
-    def youtube(self,text):
+    def generateLinkWithYoutube(self,text):
         '''Youtube検索リンクを作る'''
         r = tinyurl('https://www.youtube.com/results?search_query=' + urllib.parse.quote(text))
         return r
 
-    def yahoo(self,text):
+    def generateLinkWithYahoo(self,text):
         '''Yahoo検索リンクを作る'''
         r = tinyurl('https://search.yahoo.co.jp/search?p=' + urllib.parse.quote(text))
         return r
 
-    def bing(self,text):
+    def generateLinkWithBing(self,text):
         '''Bing検索リンクを作る'''
         r = tinyurl('https://www.bing.com/search?q=' + urllib.parse.quote(text))
         return r
 
-    def talk(self,apiKey,title, message, path="./",speaker="1",style="1",rate="1",format="2"):
+    def textToSpeech(self,apiKey,title, message, path="./",speaker="1",style="1",rate="1",format="2"):
         '''Docomo Text To Speech API で 読み上げを行う'''
         if not os.path.isfile(path+title+".wav"):
             try:
@@ -123,13 +123,13 @@ class UmeneLib(object):
             except Exception as e:
                 print(e)
                 
-    def notify(self,token,message):
+    def sendNotify(self,token,message):
         '''Line Notifyで通知する'''
         headers = {'Authorization' : 'Bearer ' + token}
         payload = {'message' : message}
         r = requests.post('https://notify-api.line.me/api/notify', headers=headers, params=payload)
 
-    def googletrans(self,word):
+    def translateWithGoogle(self,word):
         '''Google翻訳APIで翻訳する'''
         headers = {
             "User-Agent": "GoogleTranslate/5.9.59004 (iPhone; iOS 10.2; ja; iPhone9,1)"
@@ -145,7 +145,7 @@ class UmeneLib(object):
         r = r.json()
         return r["sentences"][0]["trans"]
     
-    def ojichat(self,name,emojiLevel=3,punctiuationLevel=1):
+    def ojichatify(self,name,emojiLevel=3,punctiuationLevel=1):
         '''文字列をおじさん風に'''
         payload = {'name': name, 'emoji_level': emojiLevel, "punctiuation_level": punctiuationLevel}
         r = requests.post("https://ojichat.appspot.com/post", data=payload)
