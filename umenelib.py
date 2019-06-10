@@ -32,7 +32,7 @@ class UmeneLib(object):
         return r
     
     def convertCiplex(self,word):
-        '''文章をランダムな文字に変換する(?)'''
+        '''簡易暗号化/複合化'''
         list = []
         r = ''
         for i in range (0, len(word)):
@@ -158,6 +158,7 @@ if __name__ == "__main__":
     print(lib.convertFilesize(12041204))
     print(lib.generateRandCharacter(20))
     print(lib.convertCiplex("UmeneLib"))
+    print(lib.convertCiplex(lib.convertCiplex("UmeneLib")))
     print(lib.convertLineTime(11100000))
     print(lib.generateMusicMeta("UmeneLib"))
     print(lib.shortenWithTinyurl("http://gochiusa.com"))
